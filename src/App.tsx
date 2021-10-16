@@ -1,10 +1,11 @@
 import { Link, Switch, Route } from "react-router-dom";
+import { css } from "@emotion/react";
 
 function App() {
   return (
     <div>
       <nav>
-        <ul>
+        <ul css={gnbStyle}>
           <li>
             <Link to="/">Home</Link>
           </li>
@@ -19,5 +20,9 @@ function App() {
     </div>
   );
 }
+
+const gnbStyle = css`
+  display: flex;
+`;
 
 export default App;
