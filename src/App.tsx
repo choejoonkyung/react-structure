@@ -1,13 +1,16 @@
 import React from "react";
 import Gnb from "components/Gnb/Gnb";
 import { Switch, Route } from "react-router-dom";
+import SearchMusic from "pages/SearchMusic";
 
 function App() {
   return (
     <>
       <Gnb />
       <Switch>
-        <Route path="/test"></Route>
+        <Route path="/music/search">
+          <SearchMusic />
+        </Route>
       </Switch>
     </>
   );

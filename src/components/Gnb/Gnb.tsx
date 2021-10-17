@@ -19,8 +19,8 @@ function Gnb({}: GnbProps) {
         path: "/",
       },
       {
-        title: "Test",
-        path: "/test",
+        title: "Music Search",
+        path: "/music/search",
       },
     ],
     []
