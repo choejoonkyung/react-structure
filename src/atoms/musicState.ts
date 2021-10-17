@@ -12,6 +12,6 @@ const musicSelector = selectorFamily<MusicReleaseEntity, string>({
     },
 });
 
-export function useSearchedMusicResult(keyword: string) {
+export function useSearchMusicList(keyword: string) {
   return useRecoilValue(musicSelector(keyword));
 }
