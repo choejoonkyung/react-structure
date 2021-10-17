@@ -22,6 +22,10 @@ function Gnb({}: GnbProps) {
         title: "Music Search",
         path: "/music/search",
       },
+      {
+        title: "Error",
+        path: "/error",
+      },
     ],
     []
   );
@@ -55,6 +59,17 @@ const gnbStyle = css`
   list-style: none;
   background-color: #e8e8e8;
   padding: 14px;
+  li {
+    &:before {
+      content: " | ";
+      font-weight: 400;
+    }
+    &:first-child {
+      &:before {
+        content: "";
+      }
+    }
+  }
 `;
 
 const gnbMenuStyle = (active: boolean) => css`
