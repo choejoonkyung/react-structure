@@ -1,5 +1,6 @@
 export type TestEntity = {
   success: boolean;
+  status: number;
 };
 
 class TestingService {
@@ -9,6 +10,7 @@ class TestingService {
         () =>
           reject({
             success: false,
+            status: 400,
           }),
         ms
       );
@@ -21,6 +23,20 @@ class TestingService {
         () =>
           resolve({
             success: true,
+            status: 200,
+          }),
+        ms
+      );
+    });
+  }
+
+  static forbidden(ms: number) {
+    return new Promise<TestEntity>((_, reject) => {
+      setTimeout(
+        () =>
+          reject({
+            success: true,
+            status: 403,
           }),
         ms
       );
