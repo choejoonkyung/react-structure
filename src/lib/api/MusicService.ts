@@ -19,14 +19,18 @@ export type MusicReleaseEntity = {
 };
 
 class MusicService {
+  private static url = "https://api.music.msub.kr";
+
   private static createClient() {
     const client = axios.create({});
-    client.defaults.baseURL = "https://api.music.msub.kr";
+    client.defaults.baseURL = MusicService.url;
     return client;
   }
 
   static search(keyword: string) {
-    return this.createClient().get<MusicReleaseEntity>(`/?song=${keyword}`);
+    return MusicService.createClient().get<MusicReleaseEntity>(
+      `/?song=${keyword}`
+    );
   }
 }
 
