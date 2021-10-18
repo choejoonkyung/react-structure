@@ -7,7 +7,6 @@ const musicSelector = selectorFamily<MusicReleaseEntity, string>({
     (keyword) =>
     async ({ get }) => {
       const response = await MusicService.search(keyword);
-      console.log(response);
       return response.data;
     },
 });

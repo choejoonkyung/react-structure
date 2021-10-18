@@ -2,7 +2,7 @@ import Input from "components/@base/Input";
 import MusicList from "components/MusicList";
 import { Suspense, useState } from "react";
 
-function SearchMusic() {
+function SearchMusicPage() {
   const [keyword, setKeyword] = useState("");
   return (
     <div>
@@ -14,4 +14,4 @@ function SearchMusic() {
   );
 }
 
-export default SearchMusic;
+export default SearchMusicPage;
