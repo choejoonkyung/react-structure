@@ -1,8 +1,8 @@
 import { FallbackProps } from "react-error-boundary";
 
-type ErrorNoticeProps = {} & FallbackProps;
+type ErrorTestNoticeProps = {} & FallbackProps;
 
-function ErrorNotice({ ...errorProps }: ErrorNoticeProps) {
+function ErrorTestNotice({ ...errorProps }: ErrorTestNoticeProps) {
   console.log(errorProps.error);
 
   return (
@@ -18,4 +18,4 @@ function ErrorNotice({ ...errorProps }: ErrorNoticeProps) {
   );
 }
 
-export default ErrorNotice;
+export default ErrorTestNotice;
