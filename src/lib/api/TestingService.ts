@@ -23,6 +23,7 @@ class TestingService {
       baseURL: TestingService.MUSIC_API_URL,
       timeout: TestingService.TIME_OUT,
     });
+
     return client;
   }
 
