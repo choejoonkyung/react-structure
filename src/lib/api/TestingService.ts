@@ -6,11 +6,14 @@ export type TestEntity = {
 };
 
 class TestingService {
-  private static url = "https://reject.com/";
+  private static URL = "https://reject.com/";
+  private static TIME_OUT = 5000;
 
   private static createClient() {
-    const client = axios.create({});
-    client.defaults.baseURL = TestingService.url;
+    const client = axios.create({
+      baseURL: TestingService.URL,
+      timeout: TestingService.TIME_OUT,
+    });
     return client;
   }
 
