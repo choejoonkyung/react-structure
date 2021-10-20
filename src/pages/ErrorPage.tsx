@@ -6,6 +6,7 @@ import ResolveTest from "components/@base/Test/ResolveTest";
 
 function ErrorPage() {
   const [millisecond, setMillisecond] = useState(3000);
+
   return (
     <div>
       <ErrorBoundary

@@ -1,9 +1,23 @@
+import axios from "axios";
+
 export type TestEntity = {
   success: boolean;
   status: number;
 };
 
 class TestingService {
+  private static url = "https://reject.com/";
+
+  private static createClient() {
+    const client = axios.create({});
+    client.defaults.baseURL = TestingService.url;
+    return client;
+  }
+
+  static apiError() {
+    return TestingService.createClient().get(`/?fail`);
+  }
+
   static reject(ms: number) {
     return new Promise<TestEntity>((_, reject) => {
       setTimeout(

@@ -1,5 +1,5 @@
 import TestingService, { TestEntity } from "lib/api/TestingService";
-import { selectorFamily, useRecoilValue } from "recoil";
+import { selector, selectorFamily, useRecoilValue } from "recoil";
 
 const testRejectSelector = selectorFamily<TestEntity, number>({
   key: "testRejectState",
@@ -31,6 +31,14 @@ const testForbiddenSelector = selectorFamily<TestEntity, number>({
     },
 });
 
+const testApiError = selector({
+  key: "testApiState",
+  get: async ({ get }) => {
+    const response = await TestingService.apiError();
+    return response;
+  },
+});
+
 export function useTestReject(ms: number) {
   return useRecoilValue(testRejectSelector(ms));
 }
@@ -41,4 +49,8 @@ export function useTestResolve(ms: number) {
 
 export function useTestForbidden(ms: number) {
   return useRecoilValue(testForbiddenSelector(ms));
+}
+
+export function useTestApiError() {
+  return useRecoilValue(testApiError);
 }
