@@ -6,8 +6,9 @@ export type TestEntity = {
 };
 
 class TestingService {
-  private static URL = "https://reject.com/";
-  private static TIME_OUT = 5000;
+  private static URL = "https://reject.com/"; // 없는 url
+  private static MUSIC_API_URL = "https://api.music.msub.kr";
+  private static TIME_OUT = 3000;
 
   private static createClient() {
     const client = axios.create({
@@ -17,8 +18,20 @@ class TestingService {
     return client;
   }
 
+  private static createMusicClient() {
+    const client = axios.create({
+      baseURL: TestingService.MUSIC_API_URL,
+      timeout: TestingService.TIME_OUT,
+    });
+    return client;
+  }
+
   static apiError() {
     return TestingService.createClient().get(`/?fail`);
+  }
+
+  static musicApiError() {
+    return TestingService.createMusicClient().get(`song=야생화`);
   }
 
   static reject(ms: number) {
