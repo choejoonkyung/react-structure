@@ -19,11 +19,14 @@ export type MusicReleaseEntity = {
 };
 
 class MusicService {
-  private static url = "https://api.music.msub.kr";
+  private static URL = "https://api.music.msub.kr";
+  private static TIME_OUT = 3000;
 
   private static createClient() {
-    const client = axios.create({});
-    client.defaults.baseURL = MusicService.url;
+    const client = axios.create({
+      baseURL: MusicService.URL,
+      timeout: MusicService.TIME_OUT,
+    });
     return client;
   }
 

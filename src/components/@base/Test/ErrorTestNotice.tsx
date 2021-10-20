@@ -1,14 +1,13 @@
 import { FallbackProps } from "react-error-boundary";
 
-type ErrorNoticeProps = {} & FallbackProps;
+type ErrorTestNoticeProps = {} & FallbackProps;
 
-function ErrorNotice({ ...errorProps }: ErrorNoticeProps) {
-  console.log(errorProps.error);
-
+function ErrorTestNotice({ ...errorProps }: ErrorTestNoticeProps) {
   return (
     <div role="alert">
       <p>Something went wrong:</p>
       <pre>{errorProps.error.message}</pre>
+
       <button
         onClick={() => errorProps.resetErrorBoundary(Math.random() * 3000)}
       >
@@ -18,4 +17,4 @@ function ErrorNotice({ ...errorProps }: ErrorNoticeProps) {
   );
 }
 
-export default ErrorNotice;
+export default ErrorTestNotice;

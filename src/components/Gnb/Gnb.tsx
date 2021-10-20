@@ -26,6 +26,10 @@ function Gnb({}: GnbProps) {
         title: "Error",
         path: "/error",
       },
+      {
+        title: "Api error",
+        path: "/apierror",
+      },
     ],
     []
   );
