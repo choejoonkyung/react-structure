@@ -1,31 +1,34 @@
 import React, { ReactNode, Suspense, SuspenseProps } from "react";
 import {
   ErrorBoundary,
-  ErrorBoundaryPropsWithFallback,
+  ErrorBoundaryPropsWithRender,
 } from "react-error-boundary";
 
 type ExceptFallbackErrorBoundaryAttributes = Omit<
-  ErrorBoundaryPropsWithFallback,
-  "fallback"
+  ErrorBoundaryPropsWithRender,
+  "fallbackRender" | "fallback" | "FallbackComponent"
 >;
 
-type AsyncWrapperProps = {
+type AsyncBoundaryProps = {
   children: ReactNode;
-  ErrorFallback: ErrorBoundaryPropsWithFallback["fallback"];
+  ErrorFallback: ErrorBoundaryPropsWithRender["fallbackRender"];
   SuspenseFallback: SuspenseProps["fallback"];
 } & ExceptFallbackErrorBoundaryAttributes;
 
-function AsyncWrapper({
+function AsyncBoundary({
   children,
   ErrorFallback,
   SuspenseFallback,
   ...restErrorBoundaryAttributes
-}: AsyncWrapperProps) {
+}: AsyncBoundaryProps) {
   return (
-    <ErrorBoundary fallback={ErrorFallback} {...restErrorBoundaryAttributes}>
+    <ErrorBoundary
+      fallbackRender={ErrorFallback}
+      {...restErrorBoundaryAttributes}
+    >
       <Suspense fallback={SuspenseFallback}>{children}</Suspense>
     </ErrorBoundary>
   );
 }
 
-export default AsyncWrapper;
+export default AsyncBoundary;
