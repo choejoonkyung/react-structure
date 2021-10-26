@@ -1,5 +1,4 @@
-import axios, { Axios } from "axios";
-import AxiosService from "./AxiosService";
+import AxiosInstance from "./AxiosInstance";
 
 export type SongEntity = {
   name: string;
@@ -21,7 +20,7 @@ export type MusicReleaseEntity = {
 
 class MusicService {
   static search(keyword: string) {
-    return AxiosService.createClient().get<MusicReleaseEntity>(
+    return AxiosInstance.createInstance().get<MusicReleaseEntity>(
       `/?song=${keyword}`
     );
   }

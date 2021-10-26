@@ -19,10 +19,4 @@ function MusicList({ keyword }: MusicListProps) {
   );
 }
 
-class Welcome extends React.Component {
-  render() {
-    return <h1>Hello, {this.setState}</h1>;
-  }
-}
-
 export default MusicList;

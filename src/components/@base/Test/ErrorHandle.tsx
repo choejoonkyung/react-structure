@@ -4,9 +4,10 @@ import { useCallback } from "react";
 type ErrorHandleProps = {};
 
 function ErrorHandle({}: ErrorHandleProps) {
-  const fetchData = useCallback(async () => {
-    await TestingService.musicApiError();
-  }, []);
+  const fetchData = useCallback(
+    async () => await TestingService.musicApiError(),
+    []
+  );
 
   return (
     <div>

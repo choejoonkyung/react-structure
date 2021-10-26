@@ -1,5 +1,4 @@
-import axios, { AxiosError } from "axios";
-import AxiosService from "./AxiosService";
+import AxiosInstance from "./AxiosInstance";
 
 export type TestEntity = {
   success: boolean;
@@ -8,17 +7,11 @@ export type TestEntity = {
 
 class TestingService {
   static apiError() {
-    return AxiosService.createClient().get(`/?fail`);
+    return AxiosInstance.getInstance(`/?fail`);
   }
 
   static musicApiError() {
-    return AxiosService.createClient()
-      .get(`song=야생화`)
-      .catch((error) => console.log(error.response));
-  }
-
-  static fetchMusic() {
-    return AxiosService.createClient().get(`?song=야생화`);
+    return AxiosInstance.getInstance(`/song=야생화`, (err) => {});
   }
 
   static reject(ms: number) {
