@@ -14,6 +14,12 @@ class TestingService {
     return AxiosInstance.getInstance(`/song=야생화`, (err) => {});
   }
 
+  static fetchError() {
+    return AxiosInstance.getInstance(`/get2`, (err) => {
+      console.log(err.response);
+    });
+  }
+
   static reject(ms: number) {
     return new Promise<TestEntity>((_, reject) => {
       setTimeout(

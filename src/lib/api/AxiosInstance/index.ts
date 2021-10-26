@@ -1,7 +1,7 @@
 import axios, { AxiosError } from "axios";
 
 class AxiosInstance {
-  private static DEFAULT_URL = "https://api.music.msub.kr";
+  private static DEFAULT_URL = "https://httpbin.org";
   private static TIME_OUT = 3000;
 
   static createInstance(baseUrl?: string) {

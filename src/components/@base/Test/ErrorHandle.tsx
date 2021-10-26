@@ -5,7 +5,7 @@ type ErrorHandleProps = {};
 
 function ErrorHandle({}: ErrorHandleProps) {
   const fetchData = useCallback(
-    async () => await TestingService.musicApiError(),
+    async () => await TestingService.fetchError(),
     []
   );
 
