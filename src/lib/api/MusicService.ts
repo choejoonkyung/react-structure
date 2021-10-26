@@ -1,4 +1,5 @@
-import axios from "axios";
+import axios, { Axios } from "axios";
+import AxiosService from "./AxiosService";
 
 export type SongEntity = {
   name: string;
@@ -19,19 +20,8 @@ export type MusicReleaseEntity = {
 };
 
 class MusicService {
-  private static URL = "https://api.music.msub.kr";
-  private static TIME_OUT = 3000;
-
-  private static createClient() {
-    const client = axios.create({
-      baseURL: MusicService.URL,
-      timeout: MusicService.TIME_OUT,
-    });
-    return client;
-  }
-
   static search(keyword: string) {
-    return MusicService.createClient().get<MusicReleaseEntity>(
+    return AxiosService.createClient().get<MusicReleaseEntity>(
       `/?song=${keyword}`
     );
   }

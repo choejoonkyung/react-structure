@@ -1,4 +1,5 @@
 import { useSearchMusicList } from "atoms/musicState";
+import React from "react";
 
 type MusicListProps = {
   keyword: string;
@@ -16,6 +17,12 @@ function MusicList({ keyword }: MusicListProps) {
       ))}
     </ul>
   );
+}
+
+class Welcome extends React.Component {
+  render() {
+    return <h1>Hello, {this.setState}</h1>;
+  }
 }
 
 export default MusicList;
