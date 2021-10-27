@@ -1,13 +1,18 @@
-import MusicService, { MusicReleaseEntity } from "lib/api/MusicService";
+import { Music, MusicList } from "Entity/Music";
+import MusicService from "lib/api/MusicService";
 import { selectorFamily, useRecoilValue } from "recoil";
 
-const musicSelector = selectorFamily<MusicReleaseEntity, string>({
+const musicSelector = selectorFamily<MusicList, string>({
   key: "musicState",
   get:
     (keyword) =>
     async ({ get }) => {
       const response = await MusicService.search(keyword);
-      return response.data;
+      const list = response.data.song.reduce<Music[]>(
+        (acc, song) => (acc = [...acc, new Music(song)]),
+        []
+      );
+      return new MusicList(list);
     },
 });
 
