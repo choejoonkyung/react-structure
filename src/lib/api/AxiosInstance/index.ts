@@ -1,4 +1,4 @@
-import axios, { AxiosError } from "axios";
+import axios from "axios";
 
 class AxiosInstance {
   private static DEFAULT_URL = "https://httpbin.org";
@@ -11,14 +11,28 @@ class AxiosInstance {
     });
   }
 
-  static getInstance(endpoint: string, errorCb?: (err: AxiosError) => void) {
-    return axios
-      .get(AxiosInstance.DEFAULT_URL + endpoint, {
-        timeout: AxiosInstance.TIME_OUT,
-      })
-      .catch((err) => {
-        errorCb && errorCb(err);
-      });
+  static getInstance(endpoint: string) {
+    return axios.get(AxiosInstance.DEFAULT_URL + endpoint, {
+      timeout: AxiosInstance.TIME_OUT,
+    });
+  }
+
+  static postInstance<T>(endpoint: string, data: T) {
+    return axios.post(AxiosInstance.DEFAULT_URL + endpoint, data, {
+      timeout: AxiosInstance.TIME_OUT,
+    });
+  }
+
+  static putInstance<T>(endpoint: string, data: T) {
+    return axios.put(AxiosInstance.DEFAULT_URL + endpoint, data, {
+      timeout: AxiosInstance.TIME_OUT,
+    });
+  }
+
+  static patchInstance<T>(endpoint: string, data: T) {
+    return axios.put(AxiosInstance.DEFAULT_URL + endpoint, data, {
+      timeout: AxiosInstance.TIME_OUT,
+    });
   }
 }
 

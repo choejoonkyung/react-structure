@@ -1,13 +1,15 @@
 import TestingService from "lib/api/TestingService";
-import { useCallback } from "react";
 
 type ErrorHandleProps = {};
 
 function ErrorHandle({}: ErrorHandleProps) {
-  const fetchData = useCallback(
-    async () => await TestingService.fetchError(),
-    []
-  );
+  const fetchData = async () => {
+    try {
+      await TestingService.fetchError();
+    } catch (error) {
+      throw error;
+    }
+  };
 
   return (
     <div>

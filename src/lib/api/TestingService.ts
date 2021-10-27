@@ -11,13 +11,11 @@ class TestingService {
   }
 
   static musicApiError() {
-    return AxiosInstance.getInstance(`/song=야생화`, (err) => {});
+    return AxiosInstance.getInstance(`/song=야생화`);
   }
 
   static fetchError() {
-    return AxiosInstance.getInstance(`/get2`, (err) => {
-      console.log(err.response);
-    });
+    return AxiosInstance.getInstance(`/get2`);
   }
 
   static reject(ms: number) {
