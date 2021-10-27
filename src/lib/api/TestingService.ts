@@ -1,4 +1,4 @@
-import axios from "axios";
+import AxiosInstance from "./AxiosInstance";
 
 export type TestEntity = {
   success: boolean;
@@ -6,33 +6,16 @@ export type TestEntity = {
 };
 
 class TestingService {
-  private static URL = "https://reject.com/"; // 없는 url
-  private static MUSIC_API_URL = "https://api.music.msub.kr";
-  private static TIME_OUT = 3000;
-
-  private static createClient() {
-    const client = axios.create({
-      baseURL: TestingService.URL,
-      timeout: TestingService.TIME_OUT,
-    });
-    return client;
-  }
-
-  private static createMusicClient() {
-    const client = axios.create({
-      baseURL: TestingService.MUSIC_API_URL,
-      timeout: TestingService.TIME_OUT,
-    });
-
-    return client;
-  }
-
   static apiError() {
-    return TestingService.createClient().get(`/?fail`);
+    return AxiosInstance.getInstance(`/?fail`);
   }
 
   static musicApiError() {
-    return TestingService.createMusicClient().get(`song=야생화`);
+    return AxiosInstance.getInstance(`/song=야생화`);
+  }
+
+  static fetchError() {
+    return AxiosInstance.getInstance(`/get2`);
   }
 
   static reject(ms: number) {

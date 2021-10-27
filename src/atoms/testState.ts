@@ -47,6 +47,15 @@ const testMusicApiError = selector({
   },
 });
 
+const testFetchError = selector({
+  key: "testMusicApiState",
+  get: async ({ get }) => {
+    const response = await TestingService.fetchError();
+
+    return response;
+  },
+});
+
 export function useTestReject(ms: number) {
   return useRecoilValue(testRejectSelector(ms));
 }
@@ -65,4 +74,8 @@ export function useTestApiError() {
 
 export function useTestMusicApiError() {
   return useRecoilValue(testMusicApiError);
+}
+
+export function useTestFetchError() {
+  return useRecoilValue(testFetchError);
 }
