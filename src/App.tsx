@@ -4,6 +4,7 @@ import { Switch, Route } from "react-router-dom";
 import SearchMusic from "pages/SearchMusicPage";
 import ErrorPage from "pages/ErrorPage";
 import ApiErrorPage from "pages/ApiErrorPage";
+import FetchErrorPage from "pages/FetchErrorPage";
 
 function App() {
   return (
@@ -15,9 +16,12 @@ function App() {
         </Route>
         <Route path="/error">
           <ErrorPage />
-        </Route>{" "}
+        </Route>
         <Route path="/apierror">
           <ApiErrorPage />
+        </Route>
+        <Route path="/errorhandle">
+          <FetchErrorPage />
         </Route>
       </Switch>
     </>

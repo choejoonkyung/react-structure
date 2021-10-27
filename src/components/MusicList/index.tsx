@@ -1,4 +1,5 @@
 import { useSearchMusicList } from "atoms/musicState";
+import React from "react";
 
 type MusicListProps = {
   keyword: string;
