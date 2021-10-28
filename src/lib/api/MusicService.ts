@@ -1,6 +1,6 @@
 import AxiosInstance from "./AxiosInstance";
 
-export type SongEntity = {
+export interface MusicEntity {
   name: string;
   artist: string;
   album: string;
@@ -9,14 +9,14 @@ export type SongEntity = {
   melonlink: string;
   kakaomelonlink: string;
   lyrics: string;
-};
+}
 
-export type MusicReleaseEntity = {
+export interface MusicReleaseEntity {
   type: string;
   status: string;
   lineup: string[];
-  song: SongEntity[];
-};
+  song: MusicEntity[];
+}
 
 class MusicService {
   static search(keyword: string) {

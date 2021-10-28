@@ -7,15 +7,15 @@ export type TestEntity = {
 
 class TestingService {
   static apiError() {
-    return AxiosInstance.getInstance(`/?fail`);
+    return AxiosInstance.createInstance().get(`/?fail`);
   }
 
   static musicApiError() {
-    return AxiosInstance.getInstance(`/song=야생화`);
+    return AxiosInstance.createInstance().get(`/song=야생화`);
   }
 
   static fetchError() {
-    return AxiosInstance.getInstance(`/get2`);
+    return AxiosInstance.createInstance().get(`/get2`);
   }
 
   static reject(ms: number) {
