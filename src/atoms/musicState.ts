@@ -1,8 +1,8 @@
-import { Music, MusicList } from "Entity/Music";
+import { Music } from "Data/Music";
 import MusicService from "lib/api/MusicService";
 import { selectorFamily, useRecoilValue } from "recoil";
 
-const musicSelector = selectorFamily<MusicList, string>({
+const musicSelector = selectorFamily<Music[], string>({
   key: "musicState",
   get:
     (keyword) =>
@@ -12,7 +12,7 @@ const musicSelector = selectorFamily<MusicList, string>({
         (acc, song) => (acc = [...acc, new Music(song)]),
         []
       );
-      return new MusicList(list);
+      return list;
     },
 });
 

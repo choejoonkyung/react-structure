@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useSearchMusicList } from "atoms/musicState";
 
 type MusicListProps = {
@@ -10,7 +10,7 @@ function MusicList({ keyword }: MusicListProps) {
 
   return (
     <ul>
-      {musicList.list.map((song, i) => (
+      {musicList.map((song, i) => (
         <li key={`song-${i}`}>
           {song.name} - {song.artist}
         </li>

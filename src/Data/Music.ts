@@ -1,20 +1,4 @@
-export interface MusicEntity {
-  name: string;
-  artist: string;
-  album: string;
-  albumimg: string;
-  date: string;
-  melonlink: string;
-  kakaomelonlink: string;
-  lyrics: string;
-}
-
-export interface MusicReleaseEntity {
-  type: string;
-  status: string;
-  lineup: string[];
-  song: MusicEntity[];
-}
+import { MusicEntity } from "lib/api/MusicService";
 
 export class Music {
   name: string;
@@ -48,13 +32,5 @@ export class Music {
 
   public checkNewRelease(date: string) {
     return true;
-  }
-}
-
-export class MusicList {
-  list: Music[];
-
-  constructor(list: Music[]) {
-    this.list = list;
   }
 }
