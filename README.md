@@ -7,3 +7,7 @@
 ### Errorboundary와 Suspense
 
 - [AsyncBoundary](src/components/@base/AsyncBoundary/readme.md)
+
+### axios로 받은 데이터 관리하기 with recoil async selector
+
+- [AxiosInstance](src/lib/api/AxiosInstance/readme.md)
