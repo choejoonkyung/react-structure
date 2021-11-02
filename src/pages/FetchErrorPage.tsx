@@ -1,11 +1,11 @@
 import AsyncBoundary from "components/@base/AsyncBoundary";
 import ErrorHandle from "components/@base/Test/ErrorHandle";
-import ErrorTestNotice from "components/@base/Test/ErrorTestNotice";
+import DisplayError from "components/@base/Test/DisplayError";
 
 function FetchErrorPage() {
   return (
     <AsyncBoundary
-      ErrorFallback={(props) => <ErrorTestNotice {...props} />}
+      ErrorFallback={(props) => <DisplayError {...props} />}
       SuspenseFallback={<div>...loading</div>}
     >
       <ErrorHandle />

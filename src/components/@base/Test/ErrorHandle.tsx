@@ -1,5 +1,5 @@
 import TestingService from "lib/api/TestingService";
-import useErrorBoundary from "lib/Errors/useErrorBoundary";
+import { isAxiosError, useErrorBoundary } from "lib/Errors/useErrorBoundary";
 
 type ErrorHandleProps = {};
 
@@ -8,13 +8,15 @@ function ErrorHandle({}: ErrorHandleProps) {
 
   const fetchData = async () => {
     try {
-      const result = await TestingService.fetchError();
-      console.log(result);
+      await TestingService.fetchError();
     } catch (error) {
-      console.log(error);
-      //custom 에러처리
-      if (error instanceof Error) {
-        setError(error);
+      if (isAxiosError(error)) {
+        switch (error.response?.data.description) {
+          case "잘못된 이메일 형식":
+            return setError(error);
+          default:
+            return setError(error);
+        }
       }
     }
   };
