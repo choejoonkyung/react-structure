@@ -3,6 +3,7 @@ import { FallbackProps } from "react-error-boundary";
 type ErrorTestNoticeProps = {} & FallbackProps;
 
 function ErrorTestNotice({ ...errorProps }: ErrorTestNoticeProps) {
+  // custom error handling
   return (
     <div role="alert">
       <p>Something went wrong:</p>

@@ -15,7 +15,7 @@ class TestingService {
   }
 
   static fetchError() {
-    return AxiosInstance.createInstance().get(`/get2`);
+    return AxiosInstance.createInstance().get(`/api/v1/company/`);
   }
 
   static reject(ms: number) {
