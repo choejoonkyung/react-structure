@@ -11,3 +11,7 @@
 ### axios로 받은 데이터 관리하기 with recoil async selector
 
 - [AxiosInstance](src/lib/api/AxiosInstance/readme.md)
+
+### error 객체로 에러 상황 처리하기
+
+- [AxiosError](src/lib/Errors/readme.md)
