@@ -8,7 +8,7 @@
 
 - [AsyncBoundary](src/components/@base/AsyncBoundary/readme.md)
 
-### axios로 받은 데이터 관리하기 with recoil async selector
+### axios로 받은 데이터 클래스로 관리하기 with recoil async selector
 
 - [AxiosInstance](src/lib/api/AxiosInstance/readme.md)
 
