@@ -7,7 +7,7 @@
 ### Errorboundary와 Suspense를 이용한 AsyncBoundary 컴포넌트
 
 데이터를 받아와서 컴포넌트에 받아온 정보를 넣어주고 사용자에게 보여주는 컴포넌트를 만든다고 했을 때 데이터를 패칭 중일 때는 로딩 처리를 위한 컴포넌트(e.g. 로딩스피너)를 랜더링하고 데이터를 가져오다 오류가 발생했다면 오류를 사용자에게 알려주는 컴포넌트를 랜더링해야합니다.
-이런 경우 이 모든 처리를 한 컴포넌트 안에서 정의하고 있으신가요? 이 [AsyncBoundary](src/components/@base/AsyncBoundary/readme.md) 컴포넌트는 **패칭 중 일때와 에러처리를 외부 컴포넌트로 위임 하므로써 더 비지니스 로직에 집중** 할 수 있는데요. 리액트에서 제공하는 Suspense와 ErrorBoundary를 이용하여 하나의 컴포넌트로 탄생시켰습니다. 더 자세한 내용은 [블로그](https://varletc0nst.tistory.com/38)를, 구현체는 [여기](src/components/@base/AsyncBoundary/readme.md)를 확인해주세요.
+이런 경우 이 모든 처리를 한 컴포넌트 안에서 정의하고 있으신가요? 이 [AsyncBoundary](src/components/@base/AsyncBoundary/index.tsx) 컴포넌트는 **패칭 중 일때와 에러처리를 외부 컴포넌트로 위임 하므로써 더 비지니스 로직에 집중** 할 수 있는데요. 리액트에서 제공하는 Suspense와 ErrorBoundary를 이용하여 하나의 컴포넌트로 탄생시켰습니다. 더 자세한 내용은 [블로그](https://varletc0nst.tistory.com/38)를, 구현체는 [여기](src/components/@base/AsyncBoundary/readme.md)를 확인해주세요.
 
 PS) AsyncBoundary를 사용하다가 발생하는 에러를 더욱 자세하게 컨트롤 하는 [방법](src/lib/Errors/readme.md)입니다.
 
