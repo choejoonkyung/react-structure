@@ -2,16 +2,19 @@
 
 > React-structure는 React를 사용하면서 API 통신과 에러 핸들링, 컴포넌트 설계법 등 딱 정해져 있지 않는 방식들을 정리하여 사용하기 편리한 구조를 만들고자 만들어진 레포입니다.
 
-## 데이터 패칭과 에러 핸들링
+## 데이터 패칭과 에러 핸들링 그리고 응답은 받은 데이터 관리하기
 
-### Errorboundary와 Suspense
+### Errorboundary와 Suspense를 이용한 AsyncBoundary 컴포넌트
 
-- [AsyncBoundary](src/components/@base/AsyncBoundary/readme.md)
+데이터를 받아와서 컴포넌트에 받아온 정보를 넣어주고 사용자에게 보여주는 컴포넌트를 만든다고 했을 때 데이터를 패칭 중일 때는 로딩 처리를 위한 컴포넌트(e.g. 로딩스피너)를 랜더링하고 데이터를 가져오다 오류가 발생했다면 오류를 사용자에게 알려주는 컴포넌트를 랜더링해야합니다.
+이런 경우 이 모든 처리를 한 컴포넌트 안에서 정의하고 있으신가요? 이 [AsyncBoundary](src/components/@base/AsyncBoundary/readme.md) 컴포넌트는 **패칭 중 일때와 에러처리를 외부 컴포넌트로 위임 하므로써 더 비지니스 로직에 집중** 할 수 있는데요. 리액트에서 제공하는 Suspense와 ErrorBoundary를 이용하여 하나의 컴포넌트로 탄생시켰습니다. 더 자세한 내용은 [블로그](https://varletc0nst.tistory.com/38)를, 구현체는 [여기](src/components/@base/AsyncBoundary/readme.md)를 확인해주세요.
 
-### axios로 받은 데이터 관리하기 with recoil async selector
+PS) AsyncBoundary를 사용하다가 발생하는 에러를 더욱 자세하게 컨트롤 하는 [방법](src/lib/Errors/readme.md)입니다.
 
-- [AxiosInstance](src/lib/api/AxiosInstance/readme.md)
+### Axios 인스턴스 객체로 만들기
 
-### error 객체로 에러 상황 처리하기
+리액트에선 HTTP 요청을 위해 axios를 사용합니다. 이 라이브러리를 사용하기 위해선 간단한 config(e.g. api 서버의 baseurl)를 설정해야하는데요. 혹시 매번 axios 사용을 위해 config 설정을 반복해서 작성하고 있으신가요? 이 [클래스](src/lib/api/AxiosInstance/index.ts)는 **axios의 config 설정을 한번만 하고 객체로 만들어 전역에서 사용**이 가능해 반복되는 config 설정 코드를 개선 할 수 있습니다.
 
-- [AxiosError](src/lib/Errors/readme.md)
+### 받은 데이터 클래스로 관리하기
+
+컴포넌트에서 데이터를 받기 위해 HTTP 요청을 한뒤 응답받은 body 타입 그대로를 JS의 object 형식으로 react의 state에 저장하여 사용하고 있으신가요? 가령 음악 정보를 리스트의 형식으로 보여주는 컴포넌트가 있다고 과정해보겠습니다. 음악 정보 리스트 컴포넌트는 음악 정보 리스트 데이터를 받아 그대로 랜더링해서 보여주는게 비지니스 로직입니다. 여기서 요구사항이 하나 있습니다. 그 요구사항은 음악의 발매 날짜와 현재 날짜를 비교해서 신곡인지 아닌지 판단하여 new라는 뱃지를 랜더링해야되는 상황이라고 가정합니다. object로 받은 상황이라면 object에서 date를 파싱하여 가져오고 비교하는 함수는 컴포넌트 내부에 정의되게 되겠죠. 음악 리스트 컴포넌트의 "음악 정보 리스트를 랜더링한다"라는 비지니스로직을 뭔가 어지럽히는 것 같습니다. 여기서 음악리스트 컴포넌트는 음악리스트만 랜더링하고 음악 정보에 대한 처리는 음악 정보가 하는 방법은 없을까요? 그것이 바로 TS를 이용해서 음악 정보 클래스를 만들어 내부 메소드로 해결하는 방법입니다. **데이터를 받을 때 object가 아닌 객체로 받게 된다면 내부 메소드 사용이 가능하여 더욱 관리가 쉽게 됩니다**. 또한 컴포넌트 역활과 데이터의 역활이 나누어져서 더 유지보수하기 용이합니다. 자세한 구현체는 [여기](src/lib/api/AxiosInstance/readme.md)를 확인해주세요!

@@ -62,7 +62,7 @@ class MusicService {
 }
 ```
 
-일단 MusicService를 구현해보겠습니다. 이 클래스는 음악 관련 api를 모아놓은 클래스입니다. 메소드를 만들 때에 `AxiosInstance.createInstance()`으로 인스턴스를 가져온 뒤에 사용 할 http 메소드를 호출하면 됩니다. 이 메소드는 `recoil async selector`에서 데이터를 받아오게 됩니다.
+일단 MusicService를 구현해보겠습니다. 이 클래스는 음악 관련 api를 모아놓은 클래스입니다. 메소드를 만들 때에 `AxiosInstance.createInstance()`으로 인스턴스를 가져온 뒤에 사용 할 http 메소드를 호출하면 됩니다. 이 메소드는 `recoil async selector`에서 데이터를 받아오게 됩니다. 다른 방식을 사용하셔도 됩니다.
 
 ```tsx
 export interface MusicEntity {
